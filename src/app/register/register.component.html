@@ -1,0 +1,40 @@
+<container-element [ngSwitch]="registerStep">
+  <div *ngSwitchCase="0" class="registartion-form">
+    <h2>Registartion</h2>
+
+    <h4>Email</h4>
+    <input
+      type="email"
+      class="email-input"
+      name="login"
+      #login="ngModel"
+      [(ngModel)]="userEmail"
+    />
+
+    <h4>Password</h4>
+    <input type="password" class="pass-input" [(ngModel)]="userPass" />
+
+    <h4>Repeat password</h4>
+    <input type="password" class="pass-input" [(ngModel)]="repeatUserPass" />
+
+    <button (click)="enterEmailAndPass()" class="next-btn">Next</button>
+  </div>
+
+  <div *ngSwitchCase="1" class="registartion-form">
+    <h2>Registartion</h2>
+
+    <p>
+      Your code has been sent to {{ userEmail }}.
+      <strong>CHECK CONSOLE F12.</strong>
+    </p>
+
+    <h4>Enter code</h4>
+    <input type="text" class="code-input" [(ngModel)]="emailCode" />
+
+    <button (click)="enterEmailCode()" class="next-btn">Next</button>
+  </div>
+
+  <div *ngSwitchCase="2">
+    <app-userpage></app-userpage>
+  </div>
+</container-element>
